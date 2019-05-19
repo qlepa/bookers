@@ -13,7 +13,9 @@ class EventsList extends React.Component {
         <div className="item" key={event.id}>
           <div className="content">
             <h3>{event.eventName}</h3>
-            <p>{event.eventGames[0].outcomes[0].outcomeOdds}</p>
+            {event.eventGames[0].outcomes.map(i => (
+              <p>{i.outcomeOdds}</p>
+            ))}
           </div>
         </div>
       );
