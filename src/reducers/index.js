@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
+import eventsReducer from './eventsReducer';
 
 export default combineReducers({
-    replaceMe: () => 'nope'
+    events: eventsReducer
 });
