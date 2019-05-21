@@ -18,41 +18,54 @@ class App extends Component {
   render() {
     return (
       <div className="ui container">
-        <div className="buttons">
-          <button onClick={this.setPoland}>Poland</button>
-          <button onClick={this.setRow}>Rest of World</button>
-          <button onClick={this.setReset}>Reset</button>
+        <div style={{ padding: "10px" }}>
+          <button className="ui button" onClick={this.setPoland}>
+            Poland
+          </button>
+          <button className="ui button" onClick={this.setRow}>
+            Rest of World
+          </button>
+          <button className="ui button" onClick={this.setReset}>
+            Reset
+          </button>
         </div>
         <BrowserRouter>
-            <Link to="/ascending">Ascending</Link>
-            <Link to="/descending">Descending</Link>
-            <Route
-              exact
-              path="/"
-              render={props => (
-                <EventsList eventPlace={this.state.eventPlace} />
-              )}
-            />
-            <Route
-              exact
-              path="/ascending"
-              render={props => (
-                <EventsList
-                  eventPlace={this.state.eventPlace}
-                  sort="ascending"
-                />
-              )}
-            />
-            <Route
-              exact
-              path="/descending"
-              render={props => (
-                <EventsList
-                  eventPlace={this.state.eventPlace}
-                  sort="descending"
-                />
-              )}
-            />
+          <div style={{ marginLeft: "10px" }}>
+            <p style={{ display: 'inline-block' }}>Sort by date:</p>
+            <Link to="/ascending" style={{ padding: "5px" }}>
+              Ascending
+            </Link>
+            <Link to="/descending" style={{ padding: "5px" }}>
+              Descending
+            </Link>
+          </div>
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <EventsList eventPlace={this.state.eventPlace} />
+            )}
+          />
+          <Route
+            exact
+            path="/ascending"
+            render={props => (
+              <EventsList
+                eventPlace={this.state.eventPlace}
+                sort="ascending"
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/descending"
+            render={props => (
+              <EventsList
+                eventPlace={this.state.eventPlace}
+                sort="descending"
+              />
+            )}
+          />
         </BrowserRouter>
       </div>
     );
