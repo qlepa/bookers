@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import EventsList from "./EventsList";
+import { BrowserRouter, Route } from 'react-router-dom';
 
 class App extends Component {
   state = { eventPlace: "none" };
@@ -22,7 +23,12 @@ class App extends Component {
           <button onClick={this.setRow}>Rest of World</button>
           <button onClick={this.setReset}>Reset</button>
         </div>
-        <EventsList eventPlace={this.state.eventPlace} />
+        <BrowserRouter>
+        <div>
+        <Route path='/eventlist' render={(props) => <EventsList eventPlace={this.state.eventPlace} />} />
+        {/* <EventsList eventPlace={this.state.eventPlace} /> */}
+        </div>
+          </BrowserRouter>
       </div>
     );
   }
