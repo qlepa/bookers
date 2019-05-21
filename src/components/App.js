@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import EventsList from "./EventsList";
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Link } from "react-router-dom";
 
 class App extends Component {
   state = { eventPlace: "none" };
@@ -24,11 +24,36 @@ class App extends Component {
           <button onClick={this.setReset}>Reset</button>
         </div>
         <BrowserRouter>
-        <div>
-        <Route path='/eventlist' render={(props) => <EventsList eventPlace={this.state.eventPlace} />} />
-        {/* <EventsList eventPlace={this.state.eventPlace} /> */}
-        </div>
-          </BrowserRouter>
+            <Link to="/ascending">Ascending</Link>
+            <Link to="/descending">Descending</Link>
+            <Route
+              exact
+              path="/"
+              render={props => (
+                <EventsList eventPlace={this.state.eventPlace} />
+              )}
+            />
+            <Route
+              exact
+              path="/ascending"
+              render={props => (
+                <EventsList
+                  eventPlace={this.state.eventPlace}
+                  sort="ascending"
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/descending"
+              render={props => (
+                <EventsList
+                  eventPlace={this.state.eventPlace}
+                  sort="descending"
+                />
+              )}
+            />
+        </BrowserRouter>
       </div>
     );
   }
