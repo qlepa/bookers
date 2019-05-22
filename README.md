@@ -1,3 +1,8 @@
+Simple app showing sports event courses with sorting by date and event place. 
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
