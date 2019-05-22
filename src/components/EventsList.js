@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchEvents } from "../actions";
 
 import ListCore from './ListCore';
+import { eventVars, sortVars } from './vars';
 
 class EventsList extends Component {
   componentDidMount() {
@@ -11,17 +12,16 @@ class EventsList extends Component {
 
   buildList(event) {
     return (
-      //To powinien być oddzielny component
       <ListCore event={event} />
     );
   }
 
   sortedState() {
-    if (this.props.sort === "ascending") {
+    if (this.props.sort === sortVars.ascending) {
       return (this.props.events.sort(
         (a, b) => parseFloat(a.eventStart) - parseFloat(b.eventStart)
       ));
-    } else if (this.props.sort === "descending") {
+    } else if (this.props.sort === sortVars.descending) {
       return (this.props.events.sort(
         (a, b) => parseFloat(b.eventStart) - parseFloat(a.eventStart)
       ));
@@ -32,17 +32,17 @@ class EventsList extends Component {
 
   renderList() {
     const sorted = this.sortedState();
-    
+
     switch (this.props.eventPlace) {
       case "poland":
         return sorted.map(event => {
-          if (event.category2Name === "Polska") {
+          if (event.category2Name === eventVars.category2name) {
             return this.buildList(event)
           }
         });
       case "other":
         return sorted.map(event => {
-          if (event.category2Name !== "Polska") {
+          if (event.category2Name !== eventVars.category2name) {
             return this.buildList(event);
           }
         });

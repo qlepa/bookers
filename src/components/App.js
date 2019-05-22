@@ -2,18 +2,20 @@ import React, { Component } from "react";
 import EventsList from "./EventsList";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
+import { eventVars, sortVars } from './vars';
+
 class App extends Component {
   state = { eventPlace: "none" };
 
   //Powinna być jedna metoda do której przekazuję argument
   setPoland = () => {
-    this.setState({ eventPlace: "poland" });
+    this.setState({ eventPlace: eventVars.placePoland });
   };
   setRow = () => {
-    this.setState({ eventPlace: "other" });
+    this.setState({ eventPlace: eventVars.placeOther });
   };
   setReset = () => {
-    this.setState({ eventPlace: "none" });
+    this.setState({ eventPlace: eventVars.placeDefault });
   };
 
   render() {
@@ -53,7 +55,7 @@ class App extends Component {
             render={props => (
               <EventsList
                 eventPlace={this.state.eventPlace}
-                sort="ascending"
+                sort={sortVars.ascending}
               />
             )}
           />
@@ -63,7 +65,7 @@ class App extends Component {
             render={props => (
               <EventsList
                 eventPlace={this.state.eventPlace}
-                sort="descending"
+                sort={sortVars.descending}
               />
             )}
           />
