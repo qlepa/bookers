@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchEvents } from "../actions";
 
+import ListCore from './ListCore';
+
 class EventsList extends Component {
   componentDidMount() {
     this.props.fetchEvents();
@@ -9,35 +11,28 @@ class EventsList extends Component {
 
   buildList(event) {
     return (
-      <div className="item" key={event.id}>
-        <div className="content">
-          <div className="header">
-            <h3>{event.eventName}</h3>
-          </div>
-          <div className="description">
-            {event.eventGames[0].outcomes.map(i => (
-              <p style={{ display: "inline-block", padding: "5px" }}>
-                {i.outcomeOdds}
-              </p>
-            ))}
-          </div>
-        </div>
-      </div>
+      //To powinien być oddzielny component
+      <ListCore event={event} />
     );
   }
 
-  renderList() {
-    const sorted = this.props.events;
+  sortedState() {
     if (this.props.sort === "ascending") {
-      const sorted = this.props.events.sort(
+      return (this.props.events.sort(
         (a, b) => parseFloat(a.eventStart) - parseFloat(b.eventStart)
-      );
+      ));
     } else if (this.props.sort === "descending") {
-      const sorted = this.props.events.sort(
+      return (this.props.events.sort(
         (a, b) => parseFloat(b.eventStart) - parseFloat(a.eventStart)
-      );
+      ));
+    } else {
+      return this.props.events;
     };
+  }
 
+  renderList() {
+    const sorted = this.sortedState();
+    
     switch (this.props.eventPlace) {
       case "poland":
         return sorted.map(event => {

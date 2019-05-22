@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 class App extends Component {
   state = { eventPlace: "none" };
 
+  //Powinna być jedna metoda do której przekazuję argument
   setPoland = () => {
     this.setState({ eventPlace: "poland" });
   };
