@@ -38,12 +38,16 @@ class EventsList extends Component {
         return sorted.map(event => {
           if (event.category2Name === eventVars.category2name) {
             return this.buildList(event)
+          } else {
+            return null;
           }
         });
       case "other":
         return sorted.map(event => {
           if (event.category2Name !== eventVars.category2name) {
             return this.buildList(event);
+          } else {
+            return null;
           }
         });
       default:

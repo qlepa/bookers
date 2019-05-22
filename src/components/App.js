@@ -7,7 +7,7 @@ import { eventVars, sortVars } from './vars';
 class App extends Component {
   state = { eventPlace: "none" };
 
-  //Powinna być jedna metoda do której przekazuję argument
+  //TODO Powinna być jedna metoda do której przekazuję argument
   setPoland = () => {
     this.setState({ eventPlace: eventVars.placePoland });
   };
