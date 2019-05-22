@@ -7,34 +7,36 @@ import { eventVars, sortVars } from './vars';
 class App extends Component {
   state = { eventPlace: "none" };
 
-  //TODO Powinna być jedna metoda do której przekazuję argument
-  setPoland = () => {
-    this.setState({ eventPlace: eventVars.placePoland });
-  };
-  setRow = () => {
-    this.setState({ eventPlace: eventVars.placeOther });
-  };
-  setReset = () => {
-    this.setState({ eventPlace: eventVars.placeDefault });
+  setPlace = (place) => {
+    this.setState({ eventPlace: eventVars[place]});
   };
 
   render() {
     return (
       <div className="ui container">
         <div style={{ padding: "10px" }}>
-          <button className="ui button" onClick={this.setPoland}>
+          <button
+            className="ui button"
+            onClick={() => this.setPlace("placePoland")}
+          >
             Poland
           </button>
-          <button className="ui button" onClick={this.setRow}>
+          <button
+            className="ui button"
+            onClick={() => this.setPlace("placeOther")}
+          >
             Rest of World
           </button>
-          <button className="ui button" onClick={this.setReset}>
+          <button
+            className="ui button"
+            onClick={() => this.setPlace("placeDefault")}
+          >
             Reset
           </button>
         </div>
         <BrowserRouter>
           <div style={{ marginLeft: "10px" }}>
-            <p style={{ display: 'inline-block' }}>Sort by date:</p>
+            <p style={{ display: "inline-block" }}>Sort by date:</p>
             <Link to="/ascending" style={{ padding: "5px" }}>
               Ascending
             </Link>
