@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/bookers/static/js/main.174cac24.chunk.js",
+    "main.js.map": "/bookers/static/js/main.174cac24.chunk.js.map",
+    "runtime~main.js": "/bookers/static/js/runtime~main.06306efb.js",
+    "runtime~main.js.map": "/bookers/static/js/runtime~main.06306efb.js.map",
+    "static/js/2.1455238c.chunk.js": "/bookers/static/js/2.1455238c.chunk.js",
+    "static/js/2.1455238c.chunk.js.map": "/bookers/static/js/2.1455238c.chunk.js.map",
+    "index.html": "/bookers/index.html",
+    "precache-manifest.7930c4c2a1c05522ce0161e713e64ec3.js": "/bookers/precache-manifest.7930c4c2a1c05522ce0161e713e64ec3.js",
+    "service-worker.js": "/bookers/service-worker.js"
+  }
+}
